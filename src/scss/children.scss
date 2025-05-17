@@ -1,0 +1,62 @@
+//     .container {
+//         max-width: 1200px; /* Ограничиваем ширину контейнера */
+//         padding-left: 15px;
+//         padding-right: 75px;
+//         margin: 0 auto;
+//         overflow-x: hidden; 
+//       }
+    
+//       .row.local-stor {
+//         display: flex;
+//         flex-wrap: wrap;
+//         margin-left: -15px;
+//         margin-right: -15px;
+//         overflow-x: hidden; /* Убираем горизонтальный скролл */
+//         box-sizing: border-box;
+//         width: 100%;
+//       }
+  
+//   .col-12.col-sm-6.col-md-3,
+//   .col-12.col-sm-6.col-five {
+//    display: inline;
+//     padding-left: 15px;
+//     padding-right: 15px;
+//     box-sizing: border-box;
+//   }
+  
+//   .col-md-3 {
+//     flex: 0 0 25% !important;
+//     max-width: 25% !important; /* 4 карточки в ряду */
+//     min-width: 0 !important;
+//   }
+  
+//   .col-five {
+//     flex: 0 0 20% !important;
+//     max-width: 20% !important; 
+//     min-width: 0 !important;
+//   }
+  
+//   .card {
+//     width: 100%;
+//     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+//     margin: 0;
+//     box-sizing: border-box;
+//   }
+  
+
+  
+//   @media (max-width: 767.98px) {
+//     .col-md-3,
+//     .col-five {
+//       flex: 0 0 50% !important;
+//       max-width: 50% !important; /* 2 карточки на планшетах */
+//     }
+//   }
+  
+//   @media (max-width: 575.98px) {
+//     .col-md-3,
+//     .col-five {
+//       flex: 0 0 100% !important;
+//       max-width: 100% !important; /* 1 карточка на мобильных */
+//     }
+//   }

@@ -1,0 +1,353 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+  }
+  
+  .press-19-f {
+    text-align: center;
+  
+    .store {
+      font-size: 40px;
+      font-weight: bold;
+      padding: 50px;
+    }
+  }
+  
+  .store-local {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 70px;
+  
+    i {
+      font-style: italic;
+    }
+  }
+  
+  .h4-form {
+    text-align: center;
+  }
+  
+  .store-container {
+    text-align: center;
+  }
+  
+  .cart-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+  
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+  
+    .back-link {
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+      margin-bottom: 20px;
+      display: inline-block;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  .cart-content {
+    display: flex !important; // Убедимся, что flex применяется
+    justify-content: space-between !important; // Гарантируем разделение
+    gap: 20px !important;
+  
+    .cart-summary {
+      flex: 0 0 30% !important; // Слева, фиксированная ширина
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      height: fit-content;
+  
+      h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+  
+      .total-price {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+  
+      .savings {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 20px;
+      }
+  
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+  
+      .checkout-btn {
+        background-color: #ffca28;
+        color: #000;
+        border: none;
+        padding: 10px 20px;
+        width: 100%;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+  
+        &:hover {
+          background-color: #ffb300;
+        }
+      }
+    }
+  
+    .cart-items {
+      flex: 0 0 65% !important; // Справа, большая часть
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+  
+      h2 {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+  
+      .cart-item {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        position: relative;
+  
+        .item-discount {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          background-color: #ff4444;
+          color: #fff;
+          padding: 2px 5px;
+          font-size: 12px;
+          border-radius: 3px;
+        }
+  
+        img {
+          width: 100px;
+          height: 100px;
+          margin-right: 15px;
+        }
+  
+        .item-details {
+          flex: 1;
+  
+          p {
+            margin: 5px 0;
+          }
+  
+          .item-price {
+            font-size: 14px;
+            color: #666;
+          }
+  
+          .original-price {
+            text-decoration: line-through;
+          }
+        }
+  
+        .item-quantity {
+          display: flex;
+          align-items: center;
+          margin-right: 20px;
+  
+          button {
+            background-color: #ddd;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+          }
+  
+          span {
+            margin: 0 10px;
+          }
+        }
+  
+        .item-total {
+          margin-right: 20px;
+  
+          p {
+            margin: 5px 0;
+          }
+  
+          .discount-price {
+            text-decoration: line-through;
+            color: #666;
+          }
+        }
+  
+        .remove-item {
+          background: none;
+          border: none;
+          font-size: 18px;
+          cursor: pointer;
+          color: #666;
+        }
+      }
+  
+      .clear-cart {
+        color: #666;
+        text-decoration: none;
+        font-size: 14px;
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  
+    // Адаптивность
+    @media (max-width: 768px) {
+      flex-direction: column !important;
+  
+      .cart-summary,
+      .cart-items {
+        flex: 0 0 100% !important;
+      }
+    }
+  }
+  .checkout-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .checkout-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  
+    .cart-summary {
+      flex: 0 0 30%;
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      height: fit-content;
+  
+      h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+  
+      .total-price {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+  
+      .subtotal,
+      .delivery-fee,
+      .savings {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 10px;
+      }
+  
+      .delivery-info,
+      .payment-info {
+        margin-top: 20px;
+  
+        h3 {
+          font-size: 16px;
+          margin-bottom: 10px;
+        }
+  
+        p {
+          font-size: 14px;
+          color: #666;
+          margin: 5px 0;
+        }
+      }
+    }
+  
+    .form-input {
+      flex: 0 0 65%;
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+  
+      h2 {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+  
+      .local-input {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+  
+        .input {
+          display: flex;
+          flex-direction: column;
+  
+          label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #333;
+          }
+  
+          input,
+          select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+  
+            &:focus {
+              outline: none;
+              border-color: #ffca28;
+            }
+          }
+        }
+  
+        .submit-btn {
+          background-color: #ffca28;
+          color: #000;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+          margin-top: 20px;
+  
+          &:hover {
+            background-color: #ffb300;
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .checkout-content {
+      flex-direction: column;
+  
+      .cart-summary,
+      .form-input {
+        flex: 0 0 100%;
+      }
+    }
+  }
