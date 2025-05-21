@@ -17,6 +17,7 @@ import Puzzles from './catalog/puzzles';
 import Antistress from './catalog/Antistress';
 import Favorites from './icon/favorites';
 import Form from './icon/form';
+import Company from './companyAll/company';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -38,6 +39,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path="Antistress" element={<Antistress />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path='/form' element ={<Form />}/>
+            <Route path='/company' element ={<Company />}/>
           </Routes>
         </BrowserRouter>
       </FavoritesProvider>

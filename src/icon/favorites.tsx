@@ -36,7 +36,9 @@ function Favorites() {
             <ul>
               <li>Акции</li>
               <li>как купить</li>
-              <li>компания</li>
+              <li>
+                <Link to='/company'>компания</Link>
+              </li>
               <li>контакты</li>
             </ul>
           </div>
@@ -157,7 +159,6 @@ function Favorites() {
           <div className="inputLocal">
             <div className="search">
               <input type="text" placeholder="Поиск" />
-              <i className="fa-solid fa-magnifying-glass"></i>
             </div>
           </div>
           <div className="icons">

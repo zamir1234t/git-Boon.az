@@ -29,9 +29,9 @@ function Store() {
 
   
   const promoCodes: { [key: string]: number } = {
-    SALE10: 10, 
-    SALE20: 20,
-    FREESHIP: 5, 
+    keYWellY: 10, 
+    abstarctRanODP: 20,
+    case: 5, 
     promo: 30,
     vgHnYT: 20 
   };
@@ -106,7 +106,9 @@ function Store() {
             <ul>
               <li>Акции</li>
               <li>как купить</li>
-              <li>компания</li>
+              <li>
+                <Link to='/company'>компания</Link>
+              </li>
               <li>контакты</li>
             </ul>
           </div>
@@ -229,7 +231,6 @@ function Store() {
           <div className="inputLocal">
             <div className="search">
               <input type="text" placeholder="Поиск" />
-              <i className="fa-solid fa-magnifying-glass"></i>
             </div>
           </div>
           <div className="icons">

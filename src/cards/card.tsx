@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './card.scss';
 import { useCart } from '../context/greatecontext';
 import { useFavorites } from '../context/favoriteContext';
@@ -13,11 +13,34 @@ export interface Card {
   azn: number;
 }
 
-function Card({ id, title, img, text, AZN, discount, azn =0 }: Card) {
-  const { addToCart } = useCart(); 
+function Card({ id, title, img, text, AZN, discount, azn,  }: Card) {
+  const { addToCart } = useCart();
+  const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
   const [count, setCount] = useState<number>(1);
+  const [rating, setRating] = useState<number>(0);
   const price = parseFloat(AZN.replace(',', '.'));
   const total = (count * price).toFixed(2);
+
+
+  const KEY =`rating${id}`
+ 
+  useEffect(() => {
+    const savedRating = localStorage.getItem(KEY);
+    if (savedRating !== null) {
+      setRating(parseInt(savedRating));
+    }
+  }, [KEY]); 
+
+ 
+ const Click =  (index: number) =>{
+  if (rating === index) {
+    setRating(0)
+    localStorage.setItem(`${KEY}`, '0' )
+  }else{
+    setRating(index)
+    localStorage.setItem( KEY, index.toString())
+  }
+ }
 
   const Increment = () => setCount(prev => prev + 1);
   const Decrement = () => setCount(prev => {
@@ -28,7 +51,7 @@ function Card({ id, title, img, text, AZN, discount, azn =0 }: Card) {
   const handleAddToCart = () => {
     addToCart({ title, img, text, AZN, discount, azn });
   };
-  const { favorites, addToFavorites, removeFromFavorites } = useFavorites(); 
+
   const addToCard = () => {
     const isFavorite = favorites.some(fav => fav.id === id);
     if (isFavorite) {
@@ -52,21 +75,23 @@ function Card({ id, title, img, text, AZN, discount, azn =0 }: Card) {
         <img src={img} className="card-img-top" alt={title} />
         <div className="card-icons">
           <i className="fa-solid fa-chart-simple"></i>
-          <i className="fa-regular fa-heart"
-   onClick={addToCard}
-   style={{ cursor: 'pointer' }}
->
-  {favorites.some(fav => fav.id === id)}
-</i>
+          <i
+            className={`fa-${favorites.some(fav => fav.id === id) ? 'solid' : 'regular'} fa-heart`}
+            onClick={addToCard}
+            style={{ cursor: 'pointer' }}
+          ></i>
           <i className="fa-solid fa-lock"></i>
         </div>
       </div>
       <div className="icon-star">
-        <i className="fa-regular fa-star"></i>
-        <i className="fa-regular fa-star"></i>
-        <i className="fa-regular fa-star"></i>
-        <i className="fa-regular fa-star"></i>
-        <i className="fa-regular fa-star"></i>
+        {[1, 2, 3, 4, 5].map(index => (
+          <i
+            key={index}
+            className={`fa-${index <= rating ? 'solid' : 'regular'} fa-star`}
+            onClick={() => Click(index)}
+            style={{ cursor: 'pointer', color: index <= rating ? '#ffc107' : '#6c757d' }}
+          ></i>
+        ))}
       </div>
       <div className="card-body local-body">
         <span className="card-title">{title}</span>

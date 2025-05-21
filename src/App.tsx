@@ -48,7 +48,9 @@ function App() {
             <ul>
               <li>Акции</li>
               <li>как купить</li>
-              <li>компания</li>
+              <li>
+                <Link to='/company'>компания</Link>
+              </li>
               <li>контакты</li>
             </ul>
           </div>
@@ -174,7 +176,6 @@ function App() {
           <div className="inputLocal">
             <div className="search">
               <input type="text" placeholder="Поиск" />
-              <i className="fa-solid fa-magnifying-glass"></i>
             </div>
           </div>
 
@@ -191,7 +192,6 @@ function App() {
           </div>
         </div>
       </main>
-
       <Header />
       <Outlet />
       <Footer />

@@ -59,7 +59,7 @@ function Form() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Расчет сумм
+ 
   const totalPrice = cartItems
     .reduce((sum, item) => sum + parseFloat(item.AZN) * item.count, 0)
     .toFixed(2);

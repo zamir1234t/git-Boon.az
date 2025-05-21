@@ -1,100 +1,128 @@
+$bg-color: #000000;
+$hover-bg: #fd9c12;
+
 .password-wrapper {
-    position: relative; 
-    margin: 10px 0; 
-  
-    .password-input {
-      width: 100%; 
-      padding: 10px 40px 10px 10px; 
+  position: relative;
+  margin: 10px 0;
+
+  .password-input {
+    width: 100%;
+    padding: 10px 40px 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+
+  .password-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #666;
+
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+.register-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .register-content {
+    background: #fff;
+    width: 90%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+
+    h3 {
+      margin-right: 90px;
+      margin-bottom: 10px;
+      font-size: 30px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
       border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 16px;
-      box-sizing: border-box; 
+      border-radius: 5px;
     }
-  
-    .password-icon {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%); 
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: $hover-bg;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
       cursor: pointer;
-      font-size: 18px;
-      color: #666;
-  
+    }
+
+    .logout-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff4d4d;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+
       &:hover {
-        color: #000; 
+        background-color: #cc0000;
       }
     }
-  }
-  $bg-color: #000000;
-  $hover-bg: #fd9c12;
-  .register-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    .register-content {
-      background: #fff;
-      width: 90%;
-      max-width: 400px;
-      padding: 30px;
-      border-radius: 10px;
-      position: relative;
-      text-align: center;
+    p {
+      margin-top: 15px;
 
-         h3{
-          margin-right: 90px;
-          margin-bottom: 10px;
-          font-size: 30px;
-         }
-
-      h2 {
-        margin-bottom: 20px;
-      }
-
-      input {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-
-      button[type="submit"] {
-        width: 100%;
-        padding: 10px;
-        background-color: $hover-bg;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        font-weight: bold;
-        cursor: pointer;
-      }
-
-      p {
-        margin-top: 15px;
-
-        a {
-          color: $hover-bg;
-          text-decoration: none;
-        }
-      }
-
-      .close-btn {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: #000;
-        cursor: pointer;
+      a {
+        color: $hover-bg;
+        text-decoration: none;
       }
     }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #000;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      margin-bottom: 10px;
+    }
+
+    .success {
+      color: green;
+      margin-bottom: 10px;
+    }
   }
+}

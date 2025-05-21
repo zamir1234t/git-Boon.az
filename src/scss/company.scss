@@ -1,0 +1,110 @@
+.promo-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    .promo-modal-content {
+      background: #fff;
+      width: 90%;
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 10px;
+      position: relative;
+      text-align: center;
+  
+      h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+  
+      ul {
+        list-style: none;
+        padding: 0;
+  
+        li {
+          margin: 10px 0;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+  
+          strong {
+            font-size: 16px;
+          }
+        }
+      }
+  
+      .copy-btn {
+        padding: 5px 10px;
+        background-color: #fd9c12;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: #e08b00;
+        }
+      }
+  
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #000;
+        cursor: pointer;
+      }
+    }
+  }
+
+
+
+  .contact{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+   width: 200px;
+   margin-left: 50px;
+   margin-top: 40px;
+   border-radius: 1px;
+
+   span{
+    padding: 10px;
+   }
+  .contact-local{
+    padding: 10px;
+  }
+  }
+
+  .local-card-2{
+    margin-top: 40px;
+    margin-left: 50px;
+    i{
+        text-align: center;
+        margin-top: 50px;
+        font-size: 50px;
+        color: #fd9c12;
+    }
+
+    .button-local{
+      width: 200px;
+      button{
+        background-color: #fd9c12;
+        width: 170px;
+        padding:10px;
+        &:hover{
+          background-color: #e08b00;
+        }
+      }
+    }
+  }

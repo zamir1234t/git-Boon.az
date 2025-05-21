@@ -1,16 +1,14 @@
-import React from 'react'
-import Cardes from '../cards/cardes'
-import Cards from '../cards/Cards'
+import React from 'react';
+import Cardes from '../cards/cardes';
+import Cards from '../cards/Cards';
 
 function Hit() {
   return (
-    < >
-    <div className='d-flex p-5 gap-1'>
-    <Cardes />
+    <div className="container py-3">
+      <Cardes />
+      <Cards />
     </div>
-    <Cards />
-    </>
-  )
+  );
 }
 
-export default Hit
+export default Hit;
