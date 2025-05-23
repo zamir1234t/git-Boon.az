@@ -15,11 +15,16 @@ function Men() {
   const toggleMenu = () => setMenu(prev => !prev);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menu && !event.target.closest('.acti') && !event.target.closest('.icon-gam')) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        menu &&
+        !(event.target as HTMLElement).closest('.acti') &&
+        !(event.target as HTMLElement).closest('.icon-gam')
+      ) {
         setMenu(false);
       }
     };
+  
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [menu]);
@@ -28,7 +33,7 @@ function Men() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
 

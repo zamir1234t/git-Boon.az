@@ -2,7 +2,45 @@ import React, { useMemo, useState } from 'react';
 import Card from '../cards/card';
 import '../scss/men.scss';
 
-export const menCard = [
+
+interface MenCardItem {
+  id: number;
+  title: string;
+  img: string;
+  text: string;
+  AZN: string;
+  discount: string;
+  azn: string;
+  category: string;
+}
+
+
+interface CardItem {
+  id: number;
+  title: string;
+  img: string;
+  text: string;
+  AZN: string;
+  discount: number;
+  azn: number;
+  category: string;
+}
+
+
+function normalizeCards(cards: MenCardItem[]): CardItem[] {
+  return cards.map((item) => ({
+    id: item.id,
+    title: item.title || '',
+    img: item.img || '',
+    text: item.text || '',
+    AZN: item.AZN || '0',
+    discount: parseFloat(item.discount) || 0,
+    azn: parseFloat(item.azn) || 0,
+    category: item.category || '',
+  }));
+}
+
+export const menCard: MenCardItem[] = [
   {
     id: 1,
     title: 'Фигурка - Забавная работа «Архитектор» . Figure Funny work «Architect» .',
@@ -11,7 +49,7 @@ export const menCard = [
     AZN: '18.80',
     discount: '23.50',
     azn: '4.70',
-    category: 'figures'
+    category: 'figures',
   },
   {
     id: 2,
@@ -21,7 +59,7 @@ export const menCard = [
     AZN: '44.00',
     discount: '55.00',
     azn: '11.00',
-    category: 'figures'
+    category: 'figures',
   },
   {
     id: 3,
@@ -31,7 +69,7 @@ export const menCard = [
     AZN: '4.80',
     discount: '6.00',
     azn: '1.20',
-    category: 'accessories'
+    category: 'accessories',
   },
   {
     id: 4,
@@ -41,7 +79,7 @@ export const menCard = [
     AZN: '8.00',
     discount: '10.00',
     azn: '2.00',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 5,
@@ -51,7 +89,7 @@ export const menCard = [
     AZN: '31.20',
     discount: '39.00',
     azn: '7.80',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 6,
@@ -61,7 +99,7 @@ export const menCard = [
     AZN: '2.80',
     discount: '3.50',
     azn: '0.70',
-    category: 'accessories'
+    category: 'accessories',
   },
   {
     id: 7,
@@ -71,7 +109,7 @@ export const menCard = [
     AZN: '2.80',
     discount: '3.50',
     azn: '0.70',
-    category: 'accessories'
+    category: 'accessories',
   },
   {
     id: 8,
@@ -81,7 +119,7 @@ export const menCard = [
     AZN: '12.00',
     discount: '15.00',
     azn: '3.00',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 9,
@@ -91,7 +129,7 @@ export const menCard = [
     AZN: '59.60',
     discount: '74.50',
     azn: '14.90',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 10,
@@ -101,7 +139,7 @@ export const menCard = [
     AZN: '71.20',
     discount: '89.00',
     azn: '17.80',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 11,
@@ -111,7 +149,7 @@ export const menCard = [
     AZN: '16.80',
     discount: '21.00',
     azn: '4.20',
-    category: 'figures'
+    category: 'figures',
   },
   {
     id: 12,
@@ -121,7 +159,7 @@ export const menCard = [
     AZN: '4.00',
     discount: '5.00',
     azn: '1.00',
-    category: 'accessories'
+    category: 'accessories',
   },
   {
     id: 13,
@@ -131,7 +169,7 @@ export const menCard = [
     AZN: '58.40',
     discount: '73.00',
     azn: '14.60',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 14,
@@ -141,7 +179,7 @@ export const menCard = [
     AZN: '101.60',
     discount: '127.00',
     azn: '25.40',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 15,
@@ -151,7 +189,7 @@ export const menCard = [
     AZN: '4.00',
     discount: '5.00',
     azn: '1.00',
-    category: 'accessories'
+    category: 'accessories',
   },
   {
     id: 16,
@@ -161,7 +199,7 @@ export const menCard = [
     AZN: '16.80',
     discount: '21.00',
     azn: '4.20',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 17,
@@ -171,7 +209,7 @@ export const menCard = [
     AZN: '12.00',
     discount: '15.00',
     azn: '3.00',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 18,
@@ -181,7 +219,7 @@ export const menCard = [
     AZN: '39.60',
     discount: '49.50',
     azn: '9.90',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 19,
@@ -191,7 +229,7 @@ export const menCard = [
     AZN: '88.00',
     discount: '110.00',
     azn: '22.00',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 20,
@@ -201,36 +239,42 @@ export const menCard = [
     AZN: '17.60',
     discount: '22.00',
     azn: '4.40',
-    category: 'board_games'
+    category: 'board_games',
   },
 ];
 
-function MenCard({ searchTerm = '' }) {
-  const [columns, setColumns] = useState(4)
-  const [category, setCategory] = useState('all')
+const MenCard: React.FC<{ searchTerm?: string }> = ({ searchTerm = '' }) => {
+  const [columns, setColumns] = useState(4);
+  const [category, setCategory] = useState('all');
 
   const toggleColumns = () => {
-    setColumns(prev => (prev === 3 ? 4 : 3))
+    setColumns((prev) => (prev === 3 ? 4 : 3));
   };
 
+ 
+  const normalizedCards = useMemo(() => normalizeCards(menCard), []);
+
   const filteredCards = useMemo(() => {
-    return menCard.filter(card => {
-      const matchesCategory = category === 'all' || card.category === category
+    return normalizedCards.filter((card) => {
+      const matchesCategory = category === 'all' || card.category === category;
       const matchesSearch = searchTerm
         ? card.title.toLowerCase().includes(searchTerm.toLowerCase())
         : true;
       return matchesCategory && matchesSearch;
     });
-  }, [category, searchTerm])
+  }, [category, searchTerm, normalizedCards]);
 
   const columnClass = columns === 3
     ? 'col-12 col-sm-6 col-md-4 mb-4'
-    : 'col-12 col-sm-6 col-md-3 mb-4'
+    : 'col-12 col-sm-6 col-md-3 mb-4';
 
   return (
     <div>
       <div className="w-100 d-flex justify-content-between mt-4 px-5 align-items-center">
-        <select onChange={(e) => setCategory(e.target.value)} className="mb-3 form-select w-auto">
+        <select
+          onChange={(e) => setCategory(e.target.value)}
+          className="mb-3 form-select w-auto"
+        >
           <option value="all">Все</option>
           <option value="board_games">Настольные игры</option>
           <option value="figures">Фигурки</option>
@@ -246,7 +290,15 @@ function MenCard({ searchTerm = '' }) {
           {filteredCards.length > 0 ? (
             filteredCards.map((card) => (
               <div className={columnClass} key={card.id} id={`card-${card.id}`}>
-                <Card {...card} />
+                <Card
+                  id={card.id}
+                  title={card.title}
+                  img={card.img}
+                  text={card.text}
+                  AZN={card.AZN}
+                  discount={card.discount}
+                  azn={card.azn}
+                />
               </div>
             ))
           ) : (
@@ -256,6 +308,6 @@ function MenCard({ searchTerm = '' }) {
       </div>
     </div>
   );
-}
+};
 
 export default MenCard;

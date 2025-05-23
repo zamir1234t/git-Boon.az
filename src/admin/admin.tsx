@@ -1,41 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import './scss/App.scss';
-import Register from './components/Register';
-import Header from './Header';
+import React, { useState } from 'react';
+import Register from '../components/Register';
 import { Outlet, Link } from 'react-router-dom';
-import Footer from './footer';
-import { SearchProvider } from './api/search';
-import { cards } from './cards/cardes';
+import { useCart } from '../context/greatecontext';
+import '../icon/mein.scss'
 
-function App() {
+function Admin() {
   const [registerOpen, setRegisterOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [menu, setMenu] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
 
   const openRegister = () => setRegisterOpen(true);
   const closeRegister = () => setRegisterOpen(false);
   const togglePassword = () => setShowPassword((prev) => !prev);
   const toggleMenu = () => setMenu((prev) => !prev);
 
- 
-useEffect(() => {
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      menu &&
-      !(event.target as HTMLElement).closest('.acti') &&
-      !(event.target as HTMLElement).closest('.icon-gam')
-    ) {
-      setMenu(false);
-    }
-  };
-
-  document.addEventListener('mousedown', handleClickOutside);
-  return () => document.removeEventListener('mousedown', handleClickOutside);
-}, [menu]);
+  const { lastOrder, clearLastOrder } = useCart();
 
   return (
-    <SearchProvider searchTerm={searchTerm} setSearchTerm={setSearchTerm}>
+    <>
       <main>
         <div className="phone">
           <div className="phone-2">
@@ -48,9 +30,7 @@ useEffect(() => {
             <ul>
               <li>Акции</li>
               <li>как купить</li>
-              <li>
-                <Link to="/company">компания</Link>
-              </li>
+              <li>компания</li>
               <li>контакты</li>
             </ul>
           </div>
@@ -144,7 +124,7 @@ useEffect(() => {
                     <Link to="">Открытки</Link>
                   </li>
                   <li>
-                    <Link to="">конверты</Link>
+                    <Link to="">конветы</Link>
                   </li>
                   <li>
                     <Link to="">копилки</Link>
@@ -173,45 +153,7 @@ useEffect(() => {
 
           <div className="inputLocal">
             <div className="search">
-              <input
-                type="text"
-                placeholder="Поиск"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-              
-              {searchTerm && (
-                <div className="holo-autocomplete">
-                  {cards
-                    .filter((card) =>
-                      card.title.toLowerCase().includes(searchTerm.toLowerCase())
-                    )
-                    .slice(0, 5)
-                    .map((card, index) => (
-                      <div
-                        key={card.id}
-                        className={`holo-card holo-card-${index}`}
-                        onClick={() => {
-                          setSearchTerm(card.title);
-                          const element = document.getElementById(`card-${card.id}`);
-                          if (element) {
-                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                          }
-                        }}
-                      >
-                        {card.img ? (
-                          <img src={card.img} alt={card.title} />
-                        ) : (
-                          <div className="no-image">Нет изображения</div>
-                        )}
-                        <div className="holo-content">
-                          <span className="holo-title">{card.title}</span>
-                          <span className="holo-price">{card.AZN} AZN</span>
-                        </div>
-                      </div>
-                    ))}
-                </div>
-              )}
+              <input type="text" placeholder="Поиск" />
             </div>
           </div>
 
@@ -228,11 +170,49 @@ useEffect(() => {
           </div>
         </div>
       </main>
-      <Header />
-      <Outlet context={{ searchTerm }} />
-      <Footer />
-    </SearchProvider>
+      <Outlet />
+      {lastOrder && (
+        <div className="order-details">
+          <h2>Последний заказ</h2>
+          <p><strong>Номер заказа:</strong> {lastOrder.orderId}</p>
+          <p><strong>ФИО:</strong> {lastOrder.fullName}</p>
+          <p><strong>Телефон:</strong> {lastOrder.phone}</p>
+          <p><strong>Город:</strong> {lastOrder.city}</p>
+          <p><strong>Мессенджер:</strong> {lastOrder.messenger}</p>
+          <h3>Купленные товары:</h3>
+          <ul className="order-items">
+            {lastOrder.items.map((item) => {
+              console.log('Item image URL:', item.img); // Отладка
+              return (
+                <li key={item.id} className="order-item">
+                  {item.img ? (
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="order-item-img"
+                      onError={(e) => {
+                        e.currentTarget.src = 'https://via.placeholder.com/60?text=No+Image';
+                      }}
+                    />
+                  ) : (
+                    <div className="order-item-placeholder">Нет изображения</div>
+                  )}
+                  <div className="order-item-details">
+                    <p><strong>{item.title}</strong></p>
+                    <p>Цена: {item.AZN} AZN</p>
+                    <p>Количество: {item.count}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+          <button className="clear-order-btn" onClick={clearLastOrder}>
+            Очистить заказ
+          </button>
+        </div>
+      )}
+    </>
   );
 }
 
-export default App;
+export default Admin;

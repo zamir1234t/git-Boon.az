@@ -1,7 +1,45 @@
 import React, { useMemo, useState } from 'react';
 import Card from '../cards/card';
 
-export const catalogcard = [
+
+interface CatalogCardItem {
+  id: number;
+  title: string;
+  img: string;
+  text: string;
+  AZN: string;
+  discount: string;
+  azn: string;
+  category: string;
+}
+
+
+interface CardItem {
+  id: number;
+  title: string;
+  img: string;
+  text: string;
+  AZN: string;
+  discount: number;
+  azn: number;
+  category: string;
+}
+
+
+function normalizeCards(cards: CatalogCardItem[]): CardItem[] {
+  return cards.map((item) => ({
+    id: item.id,
+    title: item.title || '',
+    img: item.img || '',
+    text: item.text || '',
+    AZN: item.AZN || '0',
+    discount: parseFloat(item.discount) || 0,
+    azn: parseFloat(item.azn) || 0,
+    category: item.category || '',
+  }));
+}
+
+export const catalogcard: CatalogCardItem[] = [
   {
     id: 1,
     title: 'Игра настольная «Мафия» (с масками)',
@@ -10,7 +48,7 @@ export const catalogcard = [
     AZN: '44.00',
     discount: '55.00',
     azn: '11.00',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 2,
@@ -20,7 +58,7 @@ export const catalogcard = [
     AZN: '15.20',
     discount: '19.00',
     azn: '3.80',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 3,
@@ -30,7 +68,7 @@ export const catalogcard = [
     AZN: '25.60',
     discount: '32.00',
     azn: '6.40',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 4,
@@ -40,7 +78,7 @@ export const catalogcard = [
     AZN: '52.00',
     discount: '65.00',
     azn: '13.00',
-    category: 'diamond_embroidery'
+    category: 'diamond_embroidery',
   },
   {
     id: 5,
@@ -50,7 +88,7 @@ export const catalogcard = [
     AZN: '4.00',
     discount: '5.00',
     azn: '1.00',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 6,
@@ -60,7 +98,7 @@ export const catalogcard = [
     AZN: '16.80',
     discount: '21.00',
     azn: '4.20',
-    category: 'diamond_embroidery'
+    category: 'diamond_embroidery',
   },
   {
     id: 7,
@@ -70,7 +108,7 @@ export const catalogcard = [
     AZN: '28.00',
     discount: '35.00',
     azn: '7.00',
-    category: 'music_boxes'
+    category: 'music_boxes',
   },
   {
     id: 8,
@@ -80,7 +118,7 @@ export const catalogcard = [
     AZN: '44.00',
     discount: '55.00',
     azn: '11.00',
-    category: 'diamond_embroidery'
+    category: 'diamond_embroidery',
   },
   {
     id: 9,
@@ -90,7 +128,7 @@ export const catalogcard = [
     AZN: '17.60',
     discount: '22.00',
     azn: '4.40',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 10,
@@ -100,7 +138,7 @@ export const catalogcard = [
     AZN: '105.60',
     discount: '132.00',
     azn: '26.40',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 11,
@@ -110,7 +148,7 @@ export const catalogcard = [
     AZN: '42.00',
     discount: '52.50',
     azn: '10.50',
-    category: 'music_boxes'
+    category: 'music_boxes',
   },
   {
     id: 12,
@@ -120,7 +158,7 @@ export const catalogcard = [
     AZN: '31.20',
     discount: '39.00',
     azn: '7.80',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 13,
@@ -130,7 +168,7 @@ export const catalogcard = [
     AZN: '2.80',
     discount: '3.50',
     azn: '0.70',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 14,
@@ -140,7 +178,7 @@ export const catalogcard = [
     AZN: '2.80',
     discount: '3.50',
     azn: '0.70',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 15,
@@ -150,7 +188,7 @@ export const catalogcard = [
     AZN: '28.00',
     discount: '35.00',
     azn: '7.00',
-    category: 'music_boxes'
+    category: 'music_boxes',
   },
   {
     id: 16,
@@ -160,7 +198,7 @@ export const catalogcard = [
     AZN: '12.20',
     discount: '14.00',
     azn: '2.80',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 17,
@@ -170,7 +208,7 @@ export const catalogcard = [
     AZN: '12.00',
     discount: '15.00',
     azn: '3.00',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 18,
@@ -180,7 +218,7 @@ export const catalogcard = [
     AZN: '59.60',
     discount: '74.50',
     azn: '14.90',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 19,
@@ -190,7 +228,7 @@ export const catalogcard = [
     AZN: '28.00',
     discount: '35.00',
     azn: '7.00',
-    category: 'music_boxes'
+    category: 'music_boxes',
   },
   {
     id: 20,
@@ -200,7 +238,7 @@ export const catalogcard = [
     AZN: '60.00',
     discount: '75.00',
     azn: '15.00',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 21,
@@ -210,7 +248,7 @@ export const catalogcard = [
     AZN: '49.90',
     discount: '62.00',
     azn: '12.40',
-    category: 'diamond_embroidery'
+    category: 'diamond_embroidery',
   },
   {
     id: 22,
@@ -220,7 +258,7 @@ export const catalogcard = [
     AZN: '49.60',
     discount: '62.00',
     azn: '12.40',
-    category: 'diamond_embroidery'
+    category: 'diamond_embroidery',
   },
   {
     id: 23,
@@ -230,7 +268,7 @@ export const catalogcard = [
     AZN: '28.00',
     discount: '35.00',
     azn: '7.00',
-    category: 'music_boxes'
+    category: 'music_boxes',
   },
   {
     id: 24,
@@ -240,7 +278,7 @@ export const catalogcard = [
     AZN: '80.00',
     discount: '100.00',
     azn: '20.00',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 25,
@@ -250,7 +288,7 @@ export const catalogcard = [
     AZN: '53.60',
     discount: '67.00',
     azn: '13.40',
-    category: 'diamond_embroidery'
+    category: 'diamond_embroidery',
   },
   {
     id: 26,
@@ -260,27 +298,30 @@ export const catalogcard = [
     AZN: '29.60',
     discount: '37.00',
     azn: '7.40',
-    category: 'music_boxes'
-  }
+    category: 'music_boxes',
+  },
 ];
 
-function CatalogCard({ searchTerm = '' }) {
+const CatalogCard: React.FC<{ searchTerm?: string }> = ({ searchTerm = '' }) => {
   const [columns, setColumns] = useState(4);
   const [category, setCategory] = useState('all');
 
   const toggleColumns = () => {
-    setColumns(prev => (prev === 3 ? 4 : 3));
+    setColumns((prev) => (prev === 3 ? 4 : 3));
   };
 
+  // Нормализуем данные
+  const normalizedCards = useMemo(() => normalizeCards(catalogcard), []);
+
   const filteredCards = useMemo(() => {
-    return catalogcard.filter(card => {
+    return normalizedCards.filter((card) => {
       const matchesCategory = category === 'all' || card.category === category;
       const matchesSearch = searchTerm
         ? card.title.toLowerCase().includes(searchTerm.toLowerCase())
         : true;
       return matchesCategory && matchesSearch;
     });
-  }, [category, searchTerm]);
+  }, [category, searchTerm, normalizedCards]);
 
   const columnClass = columns === 3
     ? 'col-12 col-sm-6 col-md-4 mb-4'
@@ -289,7 +330,10 @@ function CatalogCard({ searchTerm = '' }) {
   return (
     <div>
       <div className="w-100 d-flex justify-content-between mt-4 px-5 align-items-center">
-        <select onChange={(e) => setCategory(e.target.value)} className="mb-3 form-select w-auto">
+        <select
+          onChange={(e) => setCategory(e.target.value)}
+          className="mb-3 form-select w-auto"
+        >
           <option value="all">Все</option>
           <option value="board_games">Настольные игры</option>
           <option value="music_boxes">Музыкальные шкатулки</option>
@@ -303,7 +347,15 @@ function CatalogCard({ searchTerm = '' }) {
           {filteredCards.length > 0 ? (
             filteredCards.map((card) => (
               <div className={columnClass} key={card.id} id={`card-${card.id}`}>
-                <Card {...card} />
+                <Card
+                  id={card.id}
+                  title={card.title}
+                  img={card.img}
+                  text={card.text}
+                  AZN={card.AZN}
+                  discount={card.discount}
+                  azn={card.azn}
+                />
               </div>
             ))
           ) : (
@@ -313,6 +365,6 @@ function CatalogCard({ searchTerm = '' }) {
       </div>
     </div>
   );
-}
+};
 
 export default CatalogCard;

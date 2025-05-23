@@ -75,7 +75,6 @@ export const useLogin = () => {
       { code: 'case', discount: '10% off', description: 'Скидка 10% до 10% на весь заказ' },
       { code: 'abstarctRanODP', discount: 'Free Shipping', description: 'Бесплатная доставка' },
       { code: 'keYWellY', discount: '20 AZN off', description: 'скида до 20% на весь заказ' },
-      { code: 'promo', discount: '20 AZN off', description: 'скида до 20% на весь заказ' },
       
     ];
     setPromoCodes(mockPromoCodes);

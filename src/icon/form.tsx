@@ -4,27 +4,20 @@ import { Outlet, Link } from 'react-router-dom';
 import { useCart } from '../context/greatecontext';
 import './mein.scss';
 
-interface CartItem {
-  id: number;
-  img: string;
-  title: string;
-  AZN: string;
-  discount: string;
-  count: number;
-}
+
+
 
 function Form() {
   const [registerOpen, setRegisterOpen] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [menu, setMenu] = useState(false);
+
   const openRegister = () => setRegisterOpen(true);
   const closeRegister = () => setRegisterOpen(false);
-
-  const [showPassword, setShowPassword] = useState(false);
   const togglePassword = () => setShowPassword((prev) => !prev);
-
-  const [menu, setMenu] = useState(false);
   const toggleMenu = () => setMenu((prev) => !prev);
 
-  const { cartItems, clearCart, promoCode, promoDiscount } = useCart();
+  const { cartItems, clearCart, promoCode, promoDiscount, setLastOrder } = useCart();
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -43,6 +36,17 @@ function Form() {
       alert('Заполните все обязательные поля (ФИО, Телефон, Город).');
       return;
     }
+
+    const orderId = `BOON-${Date.now()}`;
+    setLastOrder({
+      orderId,
+      fullName: formData.fullName,
+      phone: formData.phone,
+      city: formData.city,
+      messenger: formData.messenger || 'Не указан',
+      items: cartItems,
+    });
+
     console.log('Order submitted:', { formData, cartItems, promoCode, promoDiscount });
     alert('Заказ оформлен!');
 
@@ -52,14 +56,13 @@ function Form() {
       messenger: '',
       city: '',
     });
-    clearCart(); 
+    clearCart();
   };
 
   const scroll = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
- 
   const totalPrice = cartItems
     .reduce((sum, item) => sum + parseFloat(item.AZN) * item.count, 0)
     .toFixed(2);
@@ -74,7 +77,7 @@ function Form() {
     ) + (parseFloat(totalPrice) - parseFloat(discountedPrice))
   ).toFixed(2);
   const deliveryFee = '4.00';
-  const subtotal = (parseFloat(discountedPrice)).toFixed(2); 
+  const subtotal = parseFloat(discountedPrice).toFixed(2);
   const finalTotal = (parseFloat(discountedPrice) + parseFloat(deliveryFee)).toFixed(2);
 
   return (
@@ -91,7 +94,9 @@ function Form() {
             <ul>
               <li>Акции</li>
               <li>как купить</li>
-              <li>компания</li>
+              <li>
+                <Link to='/company'>компания</Link>
+              </li>
               <li>контакты</li>
             </ul>
           </div>
@@ -101,7 +106,9 @@ function Form() {
               <i className="fa-solid fa-globe"></i>
               <button className="button">RU</button>
               <div className="dropdown-content">
-                <a id="top" href="">RU</a>
+                <a id="top" href="">
+                  RU
+                </a>
               </div>
             </div>
             <Register
@@ -215,7 +222,6 @@ function Form() {
           <div className="inputLocal">
             <div className="search">
               <input type="text" placeholder="Поиск" required />
-              <i className="fa-solid fa-magnifying-glass"></i>
             </div>
           </div>
 

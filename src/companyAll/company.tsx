@@ -58,7 +58,7 @@ function Company() {
         throw new Error('Промокод пустой или отсутствует');
       }
       
-      await navigator.clipboard.write(code);
+      await navigator.clipboard.writeText(code);
       setCopyStatus(`Промокод ${code} скопирован!`);
       setTimeout(() => setCopyStatus(null), 2000);
     } catch (err) {
@@ -244,8 +244,6 @@ function Company() {
             </div>
           </div>
         </div>
-
-      
         {showPromoModal && hasPromoAccess && (
           <div className="promo-modal">
             <div className="promo-modal-content">

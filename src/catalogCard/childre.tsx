@@ -2,7 +2,45 @@ import React, { useMemo, useState } from 'react';
 import Card from '../cards/card';
 import '../scss/children.scss';
 
-export const childrenCard = [
+// Интерфейс для элементов массива childrenCard
+interface ChildrenCardItem {
+  id: number;
+  title: string;
+  img: string;
+  text: string;
+  AZN: string;
+  discount: string;
+  azn: string;
+  category: string;
+}
+
+// Интерфейс для props компонента Card
+interface CardItem {
+  id: number;
+  title: string;
+  img: string;
+  text: string;
+  AZN: string;
+  discount: number;
+  azn: number;
+  category: string;
+}
+
+// Функция нормализации данных
+function normalizeCards(cards: ChildrenCardItem[]): CardItem[] {
+  return cards.map((item) => ({
+    id: item.id,
+    title: item.title || '',
+    img: item.img || '',
+    text: item.text || '',
+    AZN: item.AZN || '0',
+    discount: parseFloat(item.discount) || 0,
+    azn: parseFloat(item.azn) || 0,
+    category: item.category || '',
+  }));
+}
+
+export const childrenCard: ChildrenCardItem[] = [
   {
     id: 1,
     title: 'Книга - сейф «PISA» 24 см',
@@ -11,7 +49,7 @@ export const childrenCard = [
     AZN: '25.60',
     discount: '32.00',
     azn: '6.40',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 2,
@@ -21,7 +59,7 @@ export const childrenCard = [
     AZN: '19.60',
     discount: '24.50',
     azn: '4.90',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 3,
@@ -31,7 +69,7 @@ export const childrenCard = [
     AZN: '29.60',
     discount: '37.00',
     azn: '7.40',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 4,
@@ -41,7 +79,7 @@ export const childrenCard = [
     AZN: '20.00',
     discount: '25.00',
     azn: '5.00',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 5,
@@ -51,7 +89,7 @@ export const childrenCard = [
     AZN: '53.60',
     discount: '67.00',
     azn: '13.40',
-    category: 'creativity'
+    category: 'creativity',
   },
   {
     id: 6,
@@ -61,7 +99,7 @@ export const childrenCard = [
     AZN: '15.60',
     discount: '19.50',
     azn: '3.90',
-    category: 'creativity'
+    category: 'creativity',
   },
   {
     id: 7,
@@ -71,7 +109,7 @@ export const childrenCard = [
     AZN: '88.00',
     discount: '110.00',
     azn: '22.00',
-    category: 'creativity'
+    category: 'creativity',
   },
   {
     id: 8,
@@ -81,7 +119,7 @@ export const childrenCard = [
     AZN: '26.40',
     discount: '33.00',
     azn: '6.60',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 9,
@@ -91,7 +129,7 @@ export const childrenCard = [
     AZN: '84.00',
     discount: '105.00',
     azn: '21.00',
-    category: 'creativity'
+    category: 'creativity',
   },
   {
     id: 10,
@@ -101,7 +139,7 @@ export const childrenCard = [
     AZN: '47.20',
     discount: '59.00',
     azn: '11.80',
-    category: 'constructors'
+    category: 'constructors',
   },
   {
     id: 11,
@@ -111,7 +149,7 @@ export const childrenCard = [
     AZN: '39.00',
     discount: '49.00',
     azn: '9.80',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 12,
@@ -121,7 +159,7 @@ export const childrenCard = [
     AZN: '37.60',
     discount: '47.00',
     azn: '9.40',
-    category: 'constructors'
+    category: 'constructors',
   },
   {
     id: 13,
@@ -131,7 +169,7 @@ export const childrenCard = [
     AZN: '33.60',
     discount: '42.00',
     azn: '8.40',
-    category: 'constructors'
+    category: 'constructors',
   },
   {
     id: 14,
@@ -141,7 +179,7 @@ export const childrenCard = [
     AZN: '60.00',
     discount: '75.00',
     azn: '15.00',
-    category: 'constructors'
+    category: 'constructors',
   },
   {
     id: 15,
@@ -151,7 +189,7 @@ export const childrenCard = [
     AZN: '46.40',
     discount: '58.00',
     azn: '11.60',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 16,
@@ -161,7 +199,7 @@ export const childrenCard = [
     AZN: '14.40',
     discount: '18.00',
     azn: '3.60',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 17,
@@ -171,7 +209,7 @@ export const childrenCard = [
     AZN: '15.20',
     discount: '19.00',
     azn: '3.80',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 18,
@@ -181,7 +219,7 @@ export const childrenCard = [
     AZN: '36.00',
     discount: '45.00',
     azn: '9.00',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 19,
@@ -191,7 +229,7 @@ export const childrenCard = [
     AZN: '24.20',
     discount: '29.00',
     azn: '5.80',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 20,
@@ -201,7 +239,7 @@ export const childrenCard = [
     AZN: '14.80',
     discount: '18.50',
     azn: '3.70',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 21,
@@ -211,7 +249,7 @@ export const childrenCard = [
     AZN: '50.40',
     discount: '63.00',
     azn: '12.60',
-    category: 'constructors'
+    category: 'constructors',
   },
   {
     id: 22,
@@ -221,7 +259,7 @@ export const childrenCard = [
     AZN: '176.00',
     discount: '220.00',
     azn: '44.00',
-    category: 'constructors'
+    category: 'constructors',
   },
   {
     id: 23,
@@ -231,7 +269,7 @@ export const childrenCard = [
     AZN: '85.60',
     discount: '107.00',
     azn: '21.40',
-    category: 'constructors'
+    category: 'constructors',
   },
   {
     id: 24,
@@ -241,7 +279,7 @@ export const childrenCard = [
     AZN: '22.40',
     discount: '28.00',
     azn: '5.60',
-    category: 'other'
+    category: 'other',
   },
   {
     id: 25,
@@ -251,7 +289,7 @@ export const childrenCard = [
     AZN: '28.00',
     discount: '35.00',
     azn: '7.00',
-    category: 'board_games'
+    category: 'board_games',
   },
   {
     id: 26,
@@ -261,27 +299,30 @@ export const childrenCard = [
     AZN: '71.20',
     discount: '89.00',
     azn: '17.80',
-    category: 'board_games'
+    category: 'board_games',
   },
 ];
 
-function Childre({ searchTerm = '' }) {
+const Children: React.FC<{ searchTerm?: string }> = ({ searchTerm = '' }) => {
   const [columns, setColumns] = useState(4);
   const [category, setCategory] = useState('all');
 
   const toggleColumns = () => {
-    setColumns(prev => (prev === 3 ? 4 : 3));
+    setColumns((prev) => (prev === 3 ? 4 : 3));
   };
 
+  // Нормализуем данные
+  const normalizedCards = useMemo(() => normalizeCards(childrenCard), []);
+
   const filteredCards = useMemo(() => {
-    return childrenCard.filter(card => {
+    return normalizedCards.filter((card) => {
       const matchesCategory = category === 'all' || card.category === category;
       const matchesSearch = searchTerm
         ? card.title.toLowerCase().includes(searchTerm.toLowerCase())
         : true;
       return matchesCategory && matchesSearch;
     });
-  }, [category, searchTerm]);
+  }, [category, searchTerm, normalizedCards]);
 
   const columnClass = columns === 3
     ? 'col-12 col-sm-6 col-md-4 mb-4'
@@ -290,30 +331,44 @@ function Childre({ searchTerm = '' }) {
   return (
     <div>
       <div className="w-100 d-flex justify-content-between mt-4 px-5">
-        <select onChange={(e) => setCategory(e.target.value)} className="mb-3 me-3 form-select w-auto flex-start">
+        <select
+          onChange={(e) => setCategory(e.target.value)}
+          className="mb-3 me-3 form-select w-auto flex-start"
+        >
           <option value="all">Все</option>
           <option value="board_games">Настольные игры</option>
           <option value="constructors">Конструкторы</option>
           <option value="creativity">Творчество</option>
           <option value="other">Другое</option>
         </select>
-        <i className="fa-brands fa-hive d-flex justify-content-end" onClick={toggleColumns}></i>
+        <i
+          className="fa-brands fa-hive d-flex justify-content-end"
+          onClick={toggleColumns}
+        ></i>
       </div>
       <div className="container py-3">
         <div className="row local-stor">
           {filteredCards.length > 0 ? (
             filteredCards.map((card) => (
               <div className={columnClass} key={card.id} id={`card-${card.id}`}>
-                <Card {...card} />
+                <Card
+                  id={card.id}
+                  title={card.title}
+                  img={card.img}
+                  text={card.text}
+                  AZN={card.AZN}
+                  discount={card.discount}
+                  azn={card.azn}
+                />
               </div>
             ))
           ) : (
-            <div className="col-12 text-center">напишите правильно</div>
+            <div className="col-12 text-center">Ничего не найдено</div>
           )}
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Childre;
+export default Children;
