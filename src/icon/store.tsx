@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import Register from '../components/Register';
 import { useCart } from '../context/greatecontext';
 import { useFavorites } from '../context/favoriteContext';

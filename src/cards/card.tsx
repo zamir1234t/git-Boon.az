@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import './card.scss';
 import { useCart } from '../context/greatecontext';
 import { useFavorites } from '../context/favoriteContext';

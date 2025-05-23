@@ -1,4 +1,3 @@
-import React from 'react';
 import Cardes from '../cards/cardes';
 import Cards from '../cards/Cards';
 

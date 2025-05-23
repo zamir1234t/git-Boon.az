@@ -1,5 +1,5 @@
 
-import React, {  useState } from 'react';
+import  {  useState } from 'react';
 import Register from '../components/Register';
 import { useFavorites } from '../context/favoriteContext';
 import { Link } from 'react-router-dom';

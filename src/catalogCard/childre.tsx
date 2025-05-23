@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import Card from '../cards/card';
 import '../scss/children.scss';
 
-// Интерфейс для элементов массива childrenCard
+
 interface ChildrenCardItem {
   id: number;
   title: string;
@@ -14,7 +14,7 @@ interface ChildrenCardItem {
   category: string;
 }
 
-// Интерфейс для props компонента Card
+
 interface CardItem {
   id: number;
   title: string;
@@ -26,7 +26,7 @@ interface CardItem {
   category: string;
 }
 
-// Функция нормализации данных
+
 function normalizeCards(cards: ChildrenCardItem[]): CardItem[] {
   return cards.map((item) => ({
     id: item.id,

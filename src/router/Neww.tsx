@@ -1,4 +1,3 @@
-import React from 'react'
 import NewCards from '../newCards/newCards'
 
 function Neww() {

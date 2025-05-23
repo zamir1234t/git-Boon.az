@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import './scss/App.scss';
 import Register from './components/Register';
 import Header from './Header';
