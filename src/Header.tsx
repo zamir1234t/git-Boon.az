@@ -10,11 +10,15 @@ function Header() {
      </div>
      <div className="left-img">
       <div className="bottom-img ">
-        <img src="https://static.tengrinews.kz/userdata/news/2025/news_564064/thumb_b/photo_504137.jpeg" 
+       <Link to='/catalog'>
+       <img src="https://static.tengrinews.kz/userdata/news/2025/news_564064/thumb_b/photo_504137.jpeg" 
         alt="img" />
+       </Link>
         <div className="bottom my-3 ">
-        <img src="https://img.freepik.com/premium-photo/christmas-gifts-men-dark-blue-gift-box-candy-christmas-background-gift-time-present-him-mock-up_536572-623.jpg" 
+       <Link to='/men'>
+       <img src="https://img.freepik.com/premium-photo/christmas-gifts-men-dark-blue-gift-box-candy-christmas-background-gift-time-present-him-mock-up_536572-623.jpg" 
         alt="img" />
+       </Link>
         </div>
       </div>
      </div>

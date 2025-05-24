@@ -48,8 +48,6 @@ function Favorites() {
               <button className="button">RU</button>
               <div className="dropdown-content">
               <a id="top" href="">RU</a>
-                <a id="top" href="">EN</a>
-                <a id="top" href="">AZ</a>
               </div>
             </div>
             <Register

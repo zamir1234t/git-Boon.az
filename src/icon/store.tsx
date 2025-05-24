@@ -1,7 +1,8 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import Register from '../components/Register';
 import { useCart } from '../context/greatecontext';
 import { useFavorites } from '../context/favoriteContext';
+import { useRecentlyViewed } from '../context/RecentlyViewedContext';
 import Mein from './mein';
 import './mein.scss';
 import { Link } from 'react-router-dom';
@@ -25,18 +26,17 @@ function Store() {
 
   const { cartItems, removeFromCart, updateItemCount, promoCode, setPromoCode, promoDiscount, setPromoDiscount } = useCart();
   const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
+  const { recentlyViewed, clearRecentlyViewed } = useRecentlyViewed();
   const [promoMessage, setPromoMessage] = useState('');
 
-  
   const promoCodes: { [key: string]: number } = {
-    keYWellY: 10, 
+    keYWellY: 10,
     abstarctRanODP: 20,
-    case: 5, 
+    case: 5,
     promo: 30,
-    vgHnYT: 20 
+    vgHnYT: 20,
   };
 
-  
   const applyPromoCode = () => {
     if (promoCodes[promoCode]) {
       setPromoDiscount(promoCodes[promoCode]);
@@ -48,14 +48,12 @@ function Store() {
     }
   };
 
-  
   const resetPromoCode = () => {
     setPromoCode('');
     setPromoDiscount(0);
     setPromoMessage('');
   };
 
-  
   const totalPrice = cartItems
     .reduce((sum, item) => sum + parseFloat(item.AZN) * item.count, 0)
     .toFixed(2);
@@ -107,7 +105,7 @@ function Store() {
               <li>Акции</li>
               <li>как купить</li>
               <li>
-                <Link to='/company'>компания</Link>
+                <Link to="/company">компания</Link>
               </li>
               <li>контакты</li>
             </ul>
@@ -247,9 +245,6 @@ function Store() {
 
       <div className="cart-container">
         <h1>Корзина</h1>
-        <a href="#" className="back-link">
-          Вернуться в каталог
-        </a>
         <div className="cart-content d-flex">
           {cartItems.length === 0 ? (
             <div className="cart-items">
@@ -290,7 +285,8 @@ function Store() {
                   <button
                     onClick={applyPromoCode}
                     className="mt-2 bg-blue-500 text-white p-2 rounded"
-                style={{marginRight: '20px'}}  >
+                    style={{ marginRight: '20px' }}
+                  >
                     Применить
                   </button>
                   <button
@@ -356,6 +352,31 @@ function Store() {
             </>
           )}
         </div>
+      </div>
+
+      <div className="recently-viewed-container">
+        <h2>Недавно просмотренные</h2>
+        {recentlyViewed.length === 0 ? (
+          <p>Вы ещё не просматривали товары</p>
+        ) : (
+          <div className="recently-viewed-items d-flex">
+            {recentlyViewed.map((item) => (
+              <div key={item.id} className="recently-viewed-item">
+                <img src={item.img} alt={item.title} />
+                <p>{item.title}</p>
+                <p>{item.AZN} AZN</p>
+              </div>
+            ))}
+          </div>
+        )}
+        {recentlyViewed.length > 0 && (
+          <button
+            onClick={clearRecentlyViewed}
+            className="mt-2 bg-red-500 text-white p-2 rounded"
+          >
+            Очистить историю
+          </button>
+        )}
       </div>
 
       <Mein />

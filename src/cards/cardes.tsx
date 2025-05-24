@@ -3,6 +3,7 @@ import Card from './card';
 import data from './data';
 import './card.scss';
 import { useOutletContext } from 'react-router-dom';
+import { useRecentlyViewed } from '../context/RecentlyViewedContext';
 
 interface OutletContext {
   searchTerm: string;
@@ -13,7 +14,7 @@ interface CardItem {
   title: string;
   img: string;
   text: string;
-  AZN: string; 
+  AZN: string;
   discount: number;
   azn: number;
 }
@@ -21,7 +22,7 @@ interface CardItem {
 export const cards: CardItem[] = [
   {
     id: 1,
-    title: 'Силиконовый ночник Зайка',
+    title: 'Силиконовый ночник Зайка — мягкий и приятный  ',
     img: 'https://www.mommybag.ua/wp-content/uploads/2022/12/zajchik35.jpg',
     text: 'есть в наличии',
     AZN: '22.40',
@@ -48,7 +49,7 @@ export const cards: CardItem[] = [
   },
   {
     id: 4,
-    title: 'Пепельница для сигар Cohiba',
+    title: 'Пепельница Cohiba для сигар — стильно и удобно.',
     img: 'https://ae01.alicdn.com/kf/Hb14c64382aa8480db05e22e18f917160V.jpg',
     text: 'есть в наличии',
     AZN: '42.40',
@@ -253,22 +254,33 @@ function normal(cards: RawCardItem[]): CardItem[] {
     title: item.title || '',
     img: item.img || '',
     text: item.text || '',
-    AZN: typeof item.AZN === 'string' ? item.AZN : (item.AZN || 0).toString(), 
+    AZN: typeof item.AZN === 'string' ? item.AZN : (item.AZN || 0).toString(),
     discount: typeof item.discount === 'string' ? parseFloat(item.discount) || 0 : item.discount || 0,
     azn: typeof item.azn === 'string' ? parseFloat(item.azn) || 0 : item.azn || 0,
-  }))
+  }));
 }
 
 const Cardes: React.FC = () => {
   const { searchTerm } = useOutletContext<OutletContext>();
+  const { addToRecentlyViewed } = useRecentlyViewed();
 
-  const allCards = normal([...cards, ...(data as RawCardItem[])])
+  const allCards = normal([...cards, ...(data as RawCardItem[])]);
 
-  const displayCards = searchTerm ? allCards : cards
+  const displayCards = searchTerm ? allCards : cards;
 
   const filtered = displayCards.filter((card) =>
     card.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleCardClick = (card: CardItem) => {
+    addToRecentlyViewed({
+      id: card.id,
+      img: card.img,
+      title: card.title,
+      AZN: card.AZN,
+      discount: card.discount.toString(), 
+    });
+  };
 
   return (
     <div className="container py-3">
@@ -279,6 +291,8 @@ const Cardes: React.FC = () => {
               key={`card-${card.id}`}
               className="col-3"
               id={`card-${card.id}`}
+              onClick={() => handleCardClick(card)}
+              style={{ cursor: 'pointer' }}
             >
               <Card
                 id={card.id}

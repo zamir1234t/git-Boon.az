@@ -4,9 +4,6 @@ import { Outlet, Link } from 'react-router-dom';
 import { useCart } from '../context/greatecontext';
 import './mein.scss';
 
-
-
-
 function Form() {
   const [registerOpen, setRegisterOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -317,13 +314,15 @@ function Form() {
         </div>
       </div>
       <div className="footer-local my-5 d-flex">
-        <div className="bac-color">
+        <div className="bac-color"> 
           <div className="button-wit">
             <button id="btn" type="button">
               подписаться на рассылку
             </button>
             <i className="fa-brands fa-telegram"></i>
           </div>
+          <br />
+          <button type='submit' style={{marginLeft: '40px', color: 'white'}}><Link to='/admin'>вы можете посмотреть то что заказали</Link></button>
         </div>
         <div className="ul-lilocal">
           <ul>
@@ -342,7 +341,7 @@ function Form() {
         <div className="confik">
           <i className="fa-solid fa-book-open">
             <span>
-              Политика <br /> конфиденциальности
+              <a href="https://boon.az/include/licenses_detail.php"></a>
             </span>
           </i>
         </div>

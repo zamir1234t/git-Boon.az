@@ -1,7 +1,6 @@
 .img-300px-left {
     display: flex;
     margin-top: 30px;
-    // margin-left: 30px;
   }
   
   .images-local {
@@ -31,7 +30,7 @@
         cursor: pointer;
         &:hover{
           filter: brightness(0.6) saturate(60%) hue-rotate(360deg);
-          transform: translateY(-10px);
+          transform: scale(1.1);
         }
       }
     }

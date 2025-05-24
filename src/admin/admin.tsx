@@ -3,6 +3,7 @@ import Register from '../components/Register';
 import { Outlet, Link } from 'react-router-dom';
 import { useCart } from '../context/greatecontext';
 import '../icon/mein.scss'
+import Mein from '../icon/mein';
 
 function Admin() {
   const [registerOpen, setRegisterOpen] = useState(false);
@@ -182,7 +183,7 @@ function Admin() {
           <h3>Купленные товары:</h3>
           <ul className="order-items">
             {lastOrder.items.map((item) => {
-              console.log('Item image URL:', item.img); // Отладка
+              console.log('Item image URL:', item.img); 
               return (
                 <li key={item.id} className="order-item">
                   {item.img ? (
@@ -211,6 +212,7 @@ function Admin() {
           </button>
         </div>
       )}
+      <Mein  />  
     </>
   );
 }

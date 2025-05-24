@@ -32,7 +32,7 @@ function Company() {
     setClickCount((prev) => {
       const newCount = prev + 1;
       console.log('Click count:', newCount);
-      if (newCount === 3) {
+      if (newCount === 1) {
         console.log('Fetching promo codes...');
         fetchPromoCodes();
         setShowPromoModal(true);
